@@ -1,4 +1,4 @@
-def testing(test_string,string_array = None, data_array = None, test_data = None):
+def testing(test_string = None,string_array = None, data_array = None, test_data = None):
     """
     Prints string used for testing data stuctures.
     Can use an array to test multiple things at once.
@@ -20,7 +20,7 @@ def testing(test_string,string_array = None, data_array = None, test_data = None
             print(f"{string}: {data}")
 
         # start new line for next test
-        print("\n")
+        print(" ")
 
     # print no data if none was offered
     else:
