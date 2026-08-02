@@ -27,3 +27,11 @@ class Stack:
             raise Exception("List Empty!")
 
         return self._doubly_list.peek_last()
+
+
+# TESTS 
+empty = Stack()
+not_empty = Stack(4)
+
+# size
+
