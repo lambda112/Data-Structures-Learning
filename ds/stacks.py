@@ -1,4 +1,5 @@
 from linked_lists import DoublyLinkedList
+from test import testing
 
 class Stack:
     def __init__(self, first_elem=None):
