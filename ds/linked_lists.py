@@ -1,5 +1,5 @@
 class Node:
-    #Internal struct like class representing a node
+    # Internal struct like class representing a node
     def __init__(self, data=None, prev=None, next=None):
         self.data = data
         self.prev = prev
