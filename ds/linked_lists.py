@@ -232,6 +232,20 @@ class DoublyLinkedList:
             return data
 
 
+    def __iter__(self):
+        # get first node
+        current = self.head
+
+        # loop until there is no more values
+        while current != None:
+
+            # yield value to requester
+            yield current.data
+
+            # move forward to next node
+            current = current.next
+
+
 # ==========================================
 # TESTING
 # ==========================================
