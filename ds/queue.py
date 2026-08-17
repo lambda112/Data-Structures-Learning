@@ -1,5 +1,5 @@
 from linked_lists import DoublyLinkedList as dlist
-from test import testing
+from test import Testing
 
 class Queue:
     def __init__(self, first_elem = None):
@@ -21,7 +21,7 @@ class Queue:
 
     def peek(self):
         """Returns first element in a queue"""
-        if self.isEmpty():
+        if self.is_empty():
             raise Exception("Queue is Empty!")
         
         return self.list.peek_first()
@@ -29,7 +29,7 @@ class Queue:
 
     def poll(self):
         """Returns first element in queue and then removes it"""
-        if self.isEmpty():
+        if self.is_empty():
             raise Exception("Queue is Empty!")
 
         return self.list.remove_first()
@@ -48,22 +48,23 @@ class Queue:
     
 # Testing
 queue = Queue(7)
+test = Testing
 
 # size
-testing(test_string="Testing size method", test_data= queue.size())
+test.display_results(test_string="Testing size method", test_data= queue.size())
 
 # isEmpty
-testing(test_string="Testing isEmpty method", test_data= queue.is_empty())
+test.display_results(test_string="Testing isEmpty method", test_data= queue.is_empty())
 
 # Peek
-testing(test_string="Testing peek method", test_data= queue.peek())
+test.display_results(test_string="Testing peek method", test_data= queue.peek())
 
 # Poll
-testing(test_string="Testing poll method", test_data= queue.poll())
+test.display_results(test_string="Testing poll method", test_data= queue.poll())
 
 # offer
 queue.offer(10)
-testing(test_string="Testing offer method", test_data= queue.peek())
+test.display_results(test_string="Testing offer method", test_data= queue.peek())
 
 # iter
 queue_iter = queue.__iter__()

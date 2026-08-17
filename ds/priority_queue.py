@@ -1,3 +1,5 @@
+from test import Testing
+
 class PQ:
     def __init__(self, sz: int = 1, elems = None):
 
@@ -174,7 +176,7 @@ class PQ:
 
     def remove_at(self, i: int):
         """Remove an element at specified index from map and heap"""
-        if self.is_empty():
+        if self.is_empty() or i >= self.heap_size:
             return None
 
         # reduce heap size as removing from heap
@@ -186,11 +188,11 @@ class PQ:
         # move value to be removed to end of heap
         self.swap(i, self.heap_size)
 
+        #then remove the value from map
+        self.map_remove(removed_data, self.heap_size)
+
         # cleared reference to prevent memory leaks
         self.heap[self.heap_size] = None
-
-        # then remove the value from map
-        self.map_remove(removed_data, self.heap_size)
 
         # if last element has been removed no need to rebalance heap values 
         if (i == self.heap_size): 
@@ -241,3 +243,100 @@ class PQ:
 
 
 # TESTING
+pq_elem = PQ(5, [10,20,30,40])
+pq = PQ(5)
+test = Testing
+
+# size
+test.display_results(string_array=["Testing size of pq", "Testing size of pq_elem"], data_array=[pq.size(),pq_elem.size()])
+
+# is_empty
+test.display_results(string_array=["Testing is_empty pq", "Testing is_empty pq_elem"], data_array=[pq.is_empty(),pq_elem.is_empty()])
+
+# peek
+test.display_results(string_array=["Testing peek pq", "Testing peek pq_elem"], data_array=[pq.peek(),pq_elem.peek()])
+
+# poll 
+
+## used to get copy instead of live reference
+old_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_results(string_array=["Testing poll pq", "Testing poll pq_elem"], data_array=[pq.poll(),pq_elem.poll()])
+
+new_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_changes(old_values= old_val, new_values=new_val, var_values=["pq heap", "pq map","pq_elem heap", "pq_elem map"])
+
+
+# contains
+test.display_results(string_array=["Testing contains pq", "Testing contains pq_elem"], data_array=[pq.contains(30),pq_elem.contains(30)])
+
+
+# add
+old_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_results(string_array=["Testing add pq", "Testing add pq_elem"], data_array=[pq.add(50),pq_elem.add(50)])
+
+new_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_changes(old_values= old_val, new_values=new_val, var_values=["pq heap", "pq map","pq_elem heap", "pq_elem map"])
+
+
+# remove
+old_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_results(string_array=["Testing remove pq", "Testing remove pq_elem"], data_array=[pq.remove(20),pq_elem.remove(20)])
+
+new_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_changes(old_values= old_val, new_values=new_val, var_values=["pq heap", "pq map","pq_elem heap", "pq_elem map"])
+
+
+# remove_at
+old_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_results(string_array=["Testing remove_at pq", "Testing remove_at pq_elem"], data_array=[pq.remove_at(1),pq_elem.remove_at(1)])
+
+new_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_changes(old_values= old_val, new_values=new_val, var_values=["pq heap", "pq map","pq_elem heap", "pq_elem map"])
+
+
+# clear
+old_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_results(string_array=["Testing clear pq", "Testing clear pq_elem"], data_array=[pq.clear(),pq_elem.clear()])
+
+new_val = [
+    [list(pq.heap), {k: set(v) for k, v in pq.map.items()}], 
+    [list(pq_elem.heap), {k: set(v) for k, v in pq_elem.map.items()}]
+]
+
+test.display_changes(old_values= old_val, new_values=new_val, var_values=["pq heap", "pq map","pq_elem heap", "pq_elem map"])
