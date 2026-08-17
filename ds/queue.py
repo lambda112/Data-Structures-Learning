@@ -14,7 +14,7 @@ class Queue:
         return self.list.size
     
 
-    def isEmpty(self):
+    def is_empty(self):
         """Returns true if queue is empty else false"""
         return self.list.size == 0
     
@@ -53,7 +53,7 @@ queue = Queue(7)
 testing(test_string="Testing size method", test_data= queue.size())
 
 # isEmpty
-testing(test_string="Testing isEmpty method", test_data= queue.isEmpty())
+testing(test_string="Testing isEmpty method", test_data= queue.is_empty())
 
 # Peek
 testing(test_string="Testing peek method", test_data= queue.peek())
